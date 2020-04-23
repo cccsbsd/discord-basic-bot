@@ -16,6 +16,9 @@ module.exports = {
                 return message.channel.send("Please mention a valid member of this server");}
             if(!member.bannable){
                 return message.channel.send("I cannot ban this user! Do they have a higher role? Do I have ban permissions?");}
+	    
+	    if(member.id === message.author.id){
+		    return message.channel.send("You cannot ban yourself, silly");}
 
             let reason = args.slice(1).join(' ');
             if(!reason) reason = "No reason provided";
